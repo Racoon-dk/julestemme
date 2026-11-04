@@ -80,6 +80,7 @@
     border: 2px solid var(--line); background: #fff; display: grid; place-items: center; font-weight: 800; font-size: 16px; color: transparent;
   }
   .card.picked .check { background: var(--mint); border-color: var(--mint); color: var(--ink); }
+  .card .logo { height: 56px; max-width: 70%; object-fit: contain; object-position: left center; margin-bottom: 12px; display: block; }
   .card .nr { font-size: 13px; font-weight: 600; color: var(--mint-dark); }
   .card h3 { margin: 2px 40px 8px 0; font-size: 20px; line-height: 1.25; }
   .card p { margin: 0 0 14px; font-size: 15px; color: var(--muted); }
@@ -228,13 +229,13 @@
    Skift navn, tekst og medarbejdercitat, når I har valgt dem.
    ========================================================= */
 const finalister = [
-  { navn: "Børnecancerfonden", tekst: "Støtter børn med kræft og deres familier og giver penge til forskning i børnekræft.", citat: "Ingen børn burde skulle gennemgå sådan en lidelse. Selv en lille gestus kan betyde rigtig meget for et barn.", af: "Madalin" },
-  { navn: "Dyreværnet", tekst: "Driver blandt andet internatet i Rødovre og hjælper hjemløse og forsømte dyr til et nyt og trygt hjem.", citat: "Dyr har som regel ikke en stemme for sig selv. Dyreværnet hjælper dyr med omplacering og med at finde tryghed i mennesker igen.", af: "Jonatan" },
-  { navn: "headspace", tekst: "Giver gratis og anonym rådgivning til unge, der har brug for nogen at tale med.", citat: "Alle fortjener at blive hørt, forstået og støttet. Nogle gange kan det at lytte gøre en verden til forskel.", af: "Hattie" },
-  { navn: "Mercy Ships Danmark", tekst: "Sejler med hospitalsskibe, hvor frivilligt sundhedspersonale giver gratis operationer til mennesker i Afrika.", citat: "Sundhedspersonale fra hele verden betaler selv for at være med på det gamle danske skib Dronning Ingrid og helbrede syge børn og voksne i Afrika. Meget større kan det ikke være.", af: "Michael" },
-  { navn: "Alzheimerforeningen", tekst: "Støtter mennesker med demens og deres pårørende med rådgivning og fællesskab og arbejder for mere viden om sygdommen.", citat: "Fordi det er en pårørendesygdom.", af: "Andreas" },
-  { navn: "Hjælp din næste", tekst: "Hjælper hjemløse og socialt udsatte i Danmark.", citat: "At vores udsatte i Danmark får hjælp.", af: "Janne" },
-  { navn: "Børns Vilkår", tekst: "Står bag BørneTelefonen og hjælper børn, der har det svært, med rådgivning og støtte.", citat: "Børns Vilkår står bag både BørneTelefonen og ForældreTelefonen. Når et barn har det svært, skal der altid være en voksen, der lytter.", af: "Camilla" }
+  { navn: "Børnecancerfonden", logo: "boernecancerfonden", tekst: "Støtter børn med kræft og deres familier og giver penge til forskning i børnekræft.", citat: "Ingen børn burde skulle gennemgå sådan en lidelse. Selv en lille gestus kan betyde rigtig meget for et barn.", af: "Madalin" },
+  { navn: "Dyreværnet", logo: "dyrevaernet", tekst: "Driver blandt andet internatet i Rødovre og hjælper hjemløse og forsømte dyr til et nyt og trygt hjem.", citat: "Dyr har som regel ikke en stemme for sig selv. Dyreværnet hjælper dyr med omplacering og med at finde tryghed i mennesker igen.", af: "Jonatan" },
+  { navn: "headspace", logo: "headspace", tekst: "Giver gratis og anonym rådgivning til unge, der har brug for nogen at tale med.", citat: "Alle fortjener at blive hørt, forstået og støttet. Nogle gange kan det at lytte gøre en verden til forskel.", af: "Hattie" },
+  { navn: "Mercy Ships Danmark", logo: "mercyships", tekst: "Sejler med hospitalsskibe, hvor frivilligt sundhedspersonale giver gratis operationer til mennesker i Afrika.", citat: "Sundhedspersonale fra hele verden betaler selv for at være med på det gamle danske skib Dronning Ingrid og helbrede syge børn og voksne i Afrika. Meget større kan det ikke være.", af: "Michael" },
+  { navn: "Alzheimerforeningen", logo: "alzheimer", tekst: "Støtter mennesker med demens og deres pårørende med rådgivning og fællesskab og arbejder for mere viden om sygdommen.", citat: "Fordi det er en pårørendesygdom.", af: "Andreas" },
+  { navn: "Hjælp din næste", logo: "hjaelpdinnaeste", tekst: "Hjælper hjemløse og socialt udsatte i Danmark.", citat: "At vores udsatte i Danmark får hjælp.", af: "Janne" },
+  { navn: "Børns Vilkår", logo: "boernsvilkaar", tekst: "Står bag BørneTelefonen og hjælper børn, der har det svært, med rådgivning og støtte.", citat: "Børns Vilkår står bag både BørneTelefonen og ForældreTelefonen. Når et barn har det svært, skal der altid være en voksen, der lytter.", af: "Camilla" }
 ];
 
 /* =========================================================
@@ -259,10 +260,18 @@ finalister.forEach((f, i) => {
   el.className = "card";
   el.innerHTML = `
     <span class="check">✓</span>
+    <img class="logo" alt="">
     <div class="nr">Finalist ${i + 1}</div>
     <h3></h3><p></p>
     <blockquote><span class="q"></span><cite></cite></blockquote>`;
   el.querySelector("h3").textContent = f.navn;
+  /* Logo: vises kun, hvis filen logoer/<navn>.png findes */
+  const logo = el.querySelector(".logo");
+  if (f.logo) {
+    logo.alt = f.navn;
+    logo.addEventListener("error", () => logo.remove());
+    logo.src = "logoer/" + f.logo + ".png";
+  } else { logo.remove(); }
   el.querySelector("p").textContent = f.tekst;
   if (f.citat) {
     el.querySelector(".q").textContent = "“" + f.citat + "”";
