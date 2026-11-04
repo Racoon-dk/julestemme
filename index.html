@@ -9,19 +9,19 @@
 <meta property="og:title" content="Hvem skal have Racoons julegavepenge?">
 <meta property="og:description" content="Vi giver 120.000 kr. til gode formål. Du bestemmer hvem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --mint: #3BD4AE;
-    --mint-dark: #1fa585;
+    --mint: #47D7AC;
+    --mint-dark: #13805F;
     --mint-light: #e3f8f1;
-    --ink: #14211d;
+    --ink: #1D1D1B;
     --soft: #f3faf7;
     --muted: #5b6b66;
     --line: #d5ebe3;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: "Poppins", system-ui, sans-serif; color: var(--ink); background: var(--soft); line-height: 1.6; overflow-x: hidden; }
+  body { margin: 0; font-family: "Work Sans", system-ui, sans-serif; color: var(--ink); background: var(--soft); line-height: 1.6; overflow-x: hidden; }
   a { color: var(--mint-dark); }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
@@ -41,7 +41,7 @@
   .btn {
     display: inline-block; font: inherit; border: 0; cursor: pointer; background: var(--mint); color: var(--ink); font-weight: 800;
     padding: 16px 34px; border-radius: 999px; text-decoration: none; font-size: 18px;
-    box-shadow: 0 8px 24px rgba(59,212,174,.35); transition: transform .15s, opacity .15s;
+    box-shadow: 0 8px 24px rgba(71,215,172,.35); transition: transform .15s, opacity .15s;
   }
   .btn:hover { transform: translateY(-2px); }
   .btn:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
@@ -188,7 +188,7 @@
         <input class="hp" type="text" id="website" tabindex="-1" autocomplete="off">
         <button class="btn" id="send">Afgiv min stemme</button>
         <div class="error" id="error"></div>
-        <p class="note">Afstemningen lukker 25. november. Vi bruger kun dine oplysninger til afstemningen.</p>
+        <p class="note">Afstemningen lukker 25. november. Vi bruger kun dit navn og din virksomhed til at tælle stemmerne og sletter dem, når vinderne er fundet.</p>
       </div>
     </div>
 
@@ -217,7 +217,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Racoon Rengøring &amp; Ejendomsservice A/S · Islevdalvej 182, 2610 Rødovre</p>
+    <p>Racoon Facility · Islevdalvej 182, 2610 Rødovre</p>
     <p><a href="https://racoon.dk">racoon.dk</a></p>
   </div>
 </footer>
@@ -228,13 +228,13 @@
    Skift navn, tekst og medarbejdercitat, når I har valgt dem.
    ========================================================= */
 const finalister = [
-  { navn: "Børnecancerfonden", tekst: "Støtter børn med kræft og deres familier og giver penge til forskning i børnekræft.", citat: "Fordi et barneliv ikke skal være forgæves.", af: "Michael Lind" },
-  { navn: "Dyreværnet", tekst: "Driver blandt andet internatet i Rødovre og hjælper hjemløse og forsømte dyr til et nyt og trygt hjem.", citat: "Dyr har som regel ikke en stemme for sig selv. Dyreværnet hjælper dyr med omplacering og med at finde tryghed i mennesker igen.", af: "Jonatan Zyskind" },
+  { navn: "Børnecancerfonden", tekst: "Støtter børn med kræft og deres familier og giver penge til forskning i børnekræft.", citat: "Ingen børn burde skulle gennemgå sådan en lidelse. Selv en lille gestus kan betyde rigtig meget for et barn.", af: "Madalin" },
+  { navn: "Dyreværnet", tekst: "Driver blandt andet internatet i Rødovre og hjælper hjemløse og forsømte dyr til et nyt og trygt hjem.", citat: "Dyr har som regel ikke en stemme for sig selv. Dyreværnet hjælper dyr med omplacering og med at finde tryghed i mennesker igen.", af: "Jonatan" },
   { navn: "headspace", tekst: "Giver gratis og anonym rådgivning til unge, der har brug for nogen at tale med.", citat: "Alle fortjener at blive hørt, forstået og støttet. Nogle gange kan det at lytte gøre en verden til forskel.", af: "Hattie" },
-  { navn: "Mercy Ships Danmark", tekst: "Sejler med hospitalsskibe, hvor frivilligt sundhedspersonale giver gratis operationer til mennesker i Afrika.", citat: "Sundhedspersonale fra hele verden betaler selv for at være med på det gamle danske skib Dronning Ingrid og helbrede syge børn og voksne i Afrika. Meget større kan det ikke være.", af: "Michael Lind" },
+  { navn: "Mercy Ships Danmark", tekst: "Sejler med hospitalsskibe, hvor frivilligt sundhedspersonale giver gratis operationer til mennesker i Afrika.", citat: "Sundhedspersonale fra hele verden betaler selv for at være med på det gamle danske skib Dronning Ingrid og helbrede syge børn og voksne i Afrika. Meget større kan det ikke være.", af: "Michael" },
   { navn: "Alzheimerforeningen", tekst: "Støtter mennesker med demens og deres pårørende med rådgivning og fællesskab og arbejder for mere viden om sygdommen.", citat: "Fordi det er en pårørendesygdom.", af: "Andreas" },
-  { navn: "Hjælp din næste", tekst: "Hjælper hjemløse og socialt udsatte i Danmark.", citat: "At vores udsatte i Danmark får hjælp.", af: "Janne Bentsen" },
-  { navn: "Børns Vilkår", tekst: "Står bag BørneTelefonen og hjælper børn, der har det svært, med rådgivning og støtte.", citat: "", af: "" }
+  { navn: "Hjælp din næste", tekst: "Hjælper hjemløse og socialt udsatte i Danmark.", citat: "At vores udsatte i Danmark får hjælp.", af: "Janne" },
+  { navn: "Børns Vilkår", tekst: "Står bag BørneTelefonen og hjælper børn, der har det svært, med rådgivning og støtte.", citat: "Børns Vilkår står bag både BørneTelefonen og ForældreTelefonen. Når et barn har det svært, skal der altid være en voksen, der lytter.", af: "Camilla" }
 ];
 
 /* =========================================================
@@ -267,6 +267,11 @@ finalister.forEach((f, i) => {
   if (f.citat) {
     el.querySelector(".q").textContent = "“" + f.citat + "”";
     el.querySelector("cite").textContent = f.af;
+  } else if (f.note) {
+    const bq = el.querySelector("blockquote");
+    bq.textContent = f.note;
+    bq.style.fontStyle = "normal";
+    bq.style.color = "var(--muted)";
   } else {
     el.querySelector("blockquote").remove();
   }
