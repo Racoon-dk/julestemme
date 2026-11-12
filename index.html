@@ -165,7 +165,7 @@
     <div class="steps">
       <div class="step"><div class="n">1</div><h3>Medarbejderne foreslog</h3><p>Alle i Racoon har foreslået et godt formål, der betyder noget for dem. Ud fra deres forslag har vi valgt 7 finalister.</p></div>
       <div class="step"><div class="n">2</div><h3>I stemmer</h3><p>Vælg det formål, du synes skal have pengene, og skriv dit navn og din virksomhed. I må gerne stemme flere fra samme virksomhed.</p></div>
-      <div class="step"><div class="n">3</div><h3>Vi kører ud med checkene</h3><p>De 3 formål med flest stemmer får 50.000, 40.000 og 30.000 kr. Vi afleverer pengene i starten af december.</p></div>
+      <div class="step"><div class="n">3</div><h3>Vi kører ud med checkene</h3><p>De 3 formål med flest stemmer får 50.000, 40.000 og 30.000 kr. Vi afleverer pengene i december.</p></div>
     </div>
   </div>
 </section>
@@ -189,7 +189,7 @@
         <input class="hp" type="text" id="website" tabindex="-1" autocomplete="off">
         <button class="btn" id="send">Afgiv min stemme</button>
         <div class="error" id="error"></div>
-        <p class="note">Afstemningen lukker 25. november. Vi bruger kun dit navn og din virksomhed til at tælle stemmerne og sletter dem, når vinderne er fundet.</p>
+        <p class="note">Afstemningen lukker 1. december. Vi bruger kun dit navn og din virksomhed til at tælle stemmerne og sletter dem, når vinderne er fundet.</p>
       </div>
     </div>
 
@@ -199,7 +199,7 @@
       <div class="big">🎉</div>
       <h2>Tak for din stemme!</h2>
       <p class="lead" style="margin-bottom:0">Du har stemt på <b id="sumStemme"></b>.</p>
-      <p class="lead">Vi afslører vinderne 1. december og kører ud med checkene i starten af december. Del gerne linket med dine kolleger, så de også kan stemme.</p>
+      <p class="lead">Vi afslører vinderne i starten af december og kører selv ud med checkene. Del gerne linket med dine kolleger, så de også kan stemme.</p>
     </div>
   </div>
 </section>
@@ -209,9 +209,9 @@
     <h2>Tidsplan</h2>
     <div class="timeline">
       <div class="tl"><b>Nu</b><span>Afstemningen er åben</span></div>
-      <div class="tl"><b>25. november</b><span>Afstemningen lukker</span></div>
-      <div class="tl"><b>1. december</b><span>Vi afslører de 3 vindere</span></div>
-      <div class="tl"><b>Start december</b><span>Vi kører ud med checkene</span></div>
+      <div class="tl"><b>1. december</b><span>Afstemningen lukker</span></div>
+      <div class="tl"><b>Start december</b><span>Vi afslører de 3 vindere</span></div>
+      <div class="tl"><b>December</b><span>Vi kører ud med checkene</span></div>
     </div>
   </div>
 </section>
@@ -245,7 +245,7 @@ const finalister = [
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbxO6N-RFdO3VRkLe15K4v78S0cIlcpLm1ztLcUIwhDaQUPu4QXUZQvks9FTkTP74AKJhw/exec";
 
 /* RET HER: Hvornår afstemningen lukker (dansk tid) */
-const LUKKER = new Date("2026-11-25T23:59:59+01:00");
+const LUKKER = new Date("2026-12-01T23:59:59+01:00");
 
 /* ---- Herunder skal du ikke rette noget ---- */
 let valgt = "";
@@ -299,7 +299,7 @@ finalister.forEach((f, i) => {
 if (new Date() > LUKKER) {
   $("vote-area").hidden = true;
   $("closed").hidden = false;
-  $("closed").textContent = "Afstemningen er lukket. Tak til alle, der stemte! Vi afslører vinderne 1. december.";
+  $("closed").textContent = "Afstemningen er lukket. Tak til alle, der stemte! Vi afslører vinderne i starten af december.";
 }
 
 /* Venlig påmindelse, ingen lås */
